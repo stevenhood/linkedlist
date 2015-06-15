@@ -11,5 +11,6 @@ int main(int argc, char *argv[])
     oList.add(14);
     oList.add(29);
     oList.print();
+    cout << oList.getAt(4) << endl;
     return 0;
 }

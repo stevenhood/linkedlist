@@ -10,11 +10,11 @@ LinkedList::LinkedList()
 
 LinkedList::~LinkedList()
 {
-    clear();
+    Clear();
 }
 
 // Append the specified element to the end of this list.
-void LinkedList::add(int iValue)
+void LinkedList::Add(int iValue)
 {
     // printf("added %d, list size: %d\n", iValue, m_iSize);
     if (m_pHead == NULL) {
@@ -23,41 +23,44 @@ void LinkedList::add(int iValue)
     } else {
         Node *pOldTail = m_pTail;
         m_pTail = new Node(iValue, NULL);
-        pOldTail->setNext(m_pTail);
+        pOldTail->SetNext(m_pTail);
     }
     m_iSize++;
 }
 
 // Insert an element at the specified position in this list.
-void LinkedList::add(int iIndex, int iValue)
+void LinkedList::Add(int iIndex, int iValue)
 {
-    if (!checkIndex(iIndex))
+    if (!CheckIndex(iIndex))
         return;
 
     if (iIndex == 0) {
-        addHead(iValue);
+        AddHead(iValue);
     } else if (iIndex == m_iSize) {
-        addTail(iValue);
+        AddTail(iValue);
     } else {
-        Node *pBefore = getNode(iIndex - 1);
-        Node *pAtIndex = getNode(iIndex);
+        Node *pBefore = GetNode(iIndex - 1);
+        Node *pAtIndex = GetNode(iIndex);
         Node *pNew = new Node(iValue, pAtIndex);
-        pBefore->setNext(pNew);
+        pBefore->SetNext(pNew);
         m_iSize++;
     }
 }
 
-bool LinkedList::checkIndex(int iIndex)
+// [Private] Returns false if the specified index is out of bounds.
+// Otherwise, returns true.
+bool LinkedList::CheckIndex(int iIndex)
 {
     if (m_iSize == 0)
         return false;
     return (0 <= iIndex && iIndex < m_iSize);
 }
 
-void LinkedList::addHead(int iValue)
+// Insert the specified element at the beginning of this list.
+void LinkedList::AddHead(int iValue)
 {
     if (m_pHead == NULL) {
-        add(iValue);
+        Add(iValue);
     } else {
         Node *pOldHead = m_pHead;
         m_pHead = new Node(iValue, pOldHead);
@@ -65,32 +68,27 @@ void LinkedList::addHead(int iValue)
     }
 }
 
-void LinkedList::addTail(int iValue)
+// Append the specified element to the end of this list.
+// Equivalent to Add(int)
+void LinkedList::AddTail(int iValue)
 {
-    if (m_pTail == NULL) {
-        add(iValue);
-    } else {
-        Node *pOldTail = m_pTail;
-        m_pTail = new Node(iValue, NULL);
-        pOldTail->setNext(m_pTail);
-        m_iSize++;
-    }
+    Add(iValue);
 }
 
 // Return the element at the specified position in this list. -1 if out
 // of bounds.
-int LinkedList::get(int iIndex)
+int LinkedList::Get(int iIndex)
 {
-    Node *pNode = getNode(iIndex);
+    Node *pNode = GetNode(iIndex);
     if (pNode == NULL) {
         printf("LinkedList::get: index out of bounds (%d)\n", iIndex);
         return -1;
     }
-    return pNode->getValue();
+    return pNode->GetValue();
 }
 
 // [Private] Return a pointer to the node at the specified index in the list.
-Node* LinkedList::getNode(int iIndex)
+Node* LinkedList::GetNode(int iIndex)
 {
     int iCount = 0;
     Node *pCurrent = m_pHead;
@@ -98,7 +96,7 @@ Node* LinkedList::getNode(int iIndex)
     while (pCurrent != NULL) {
         if (iCount == iIndex)
             return pCurrent;
-        pCurrent = pCurrent->getNext();
+        pCurrent = pCurrent->GetNext();
         iCount++;
     }
 
@@ -106,30 +104,30 @@ Node* LinkedList::getNode(int iIndex)
 }
 
 // Returns the first element in this list. -1 if empty.
-int LinkedList::getHead() const
+int LinkedList::GetHead() const
 {
     if (m_pHead)
-        return m_pHead->getValue();
+        return m_pHead->GetValue();
     return -1;
 }
 
 // Returns the last element in this list. -1 if empty.
-int LinkedList::getTail() const
+int LinkedList::GetTail() const
 {
     if (m_pTail)
-        return m_pTail->getValue();
+        return m_pTail->GetValue();
     return -1;
 }
 
 // Remove all elements from this list.
-void LinkedList::clear()
+void LinkedList::Clear()
 {
     Node *pCurrent = m_pHead;
 
     while (pCurrent != NULL) {
         // printf("deleting object at %p\n", pCurrent);
         delete pCurrent;
-        pCurrent = pCurrent->getNext();
+        pCurrent = pCurrent->GetNext();
         m_iSize--;
     }
 
@@ -138,13 +136,13 @@ void LinkedList::clear()
 }
 
 // Print all elements in this list.
-void LinkedList::print()
+void LinkedList::Print()
 {
     printf("Size: %d\n", m_iSize);
     int iCount = 0;
     Node *pCurrent = m_pHead;
     while (pCurrent != NULL) {
-        printf("Node %d: value = %d\n", iCount++, pCurrent->getValue());
-        pCurrent = pCurrent->getNext();
+        printf("Node %d: value = %d\n", iCount++, pCurrent->GetValue());
+        pCurrent = pCurrent->GetNext();
     }
 }

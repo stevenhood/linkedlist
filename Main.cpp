@@ -5,7 +5,7 @@
 
 // http://stackoverflow.com/questions/14613243/a-call-to-stdcin-does-not-block
 template <typename T>
-T* getInput(T *tVal)
+T* GetInput(T *tVal)
 {
     // Check if operation failed
     if (!(std::cin >> *tVal)) {
@@ -34,25 +34,25 @@ int main(int argc, char *argv[])
 
     while (bRunning) {
         std::cout << "Enter option > ";
-        getInput(&cOption);
+        GetInput(&cOption);
         std::cout << "Add item > ";
-        getInput(&iInput);
+        GetInput(&iInput);
 
         switch (cOption) {
             case '1':
-                oList.add(iInput);
+                oList.Add(iInput);
                 break;
             case '2':
                 int iIndex;
                 std::cout << "Index > ";
-                getInput(&iIndex);
-                oList.add(iIndex, iInput);
+                GetInput(&iIndex);
+                oList.Add(iIndex, iInput);
                 break;
             case '3':
-                oList.addHead(iInput);
+                oList.AddHead(iInput);
                 break;
             case '4':
-                oList.addTail(iInput);
+                oList.AddTail(iInput);
                 break;
             case 'q':
             case 'Q':
@@ -69,8 +69,8 @@ int main(int argc, char *argv[])
             bInvalid = false;
             continue;
         }
-        std::cout << oList.size() << std::endl;
-        oList.print();
+        std::cout << oList.Size() << std::endl;
+        oList.Print();
     }
 
     return 0;

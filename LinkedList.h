@@ -5,21 +5,21 @@ class LinkedList
 public:
     LinkedList();
     ~LinkedList();
-    void add(int iValue);
-    void add(int iIndex, int iValue);
-    void addHead(int iValue);
-    void addTail(int iValue);
-    int get(int iIndex);
-    int getHead() const;
-    int getTail() const;
-    void clear();
-    void print();
-    int size() const { return m_iSize; }
+    void Add(int iValue);
+    void Add(int iIndex, int iValue);
+    void AddHead(int iValue);
+    void AddTail(int iValue);
+    int Get(int iIndex);
+    int GetHead() const;
+    int GetTail() const;
+    void Clear();
+    void Print();
+    int Size() const { return m_iSize; }
 
 private:
     int m_iSize;
     Node *m_pHead, *m_pTail;
 
-    bool checkIndex(int iIndex);
-    Node* getNode(int iIndex);
+    bool CheckIndex(int iIndex);
+    Node* GetNode(int iIndex);
 };

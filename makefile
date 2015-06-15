@@ -1,17 +1,19 @@
-all: linkedlist
-#	g++ Main.cpp Node.cpp LinkedList.cpp -o linkedlist
+# Courtesy of Mrbook (http://mrbook.org/blog/tutorials/make/)
 
-linkedlist: Main.o Node.o LinkedList.o
-	g++ Main.o Node.o LinkedList.o -o linkedlist
+CC=g++
+CFLAGS=-c -Wall
+LDFLAGS=
+SOURCES=Main.cpp Node.cpp LinkedList.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=linkedlist
 
-Main.o: Main.cpp
-	g++ -c Main.cpp
+all: $(SOURCES) $(EXECUTABLE)
 
-Node.o: Node.cpp
-	g++ -c Node.cpp
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-LinkedList.o: LinkedList.cpp
-	g++ -c LinkedList.cpp
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
 	rm *.o linkedlist

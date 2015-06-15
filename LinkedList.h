@@ -7,6 +7,8 @@ public:
     ~LinkedList();
     void add(int iValue);
     int get(int iIndex);
+    int getHead() const;
+    int getTail() const;
     void clear();
     void print();
     int size() const { return m_iSize; }

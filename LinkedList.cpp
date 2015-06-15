@@ -13,6 +13,7 @@ LinkedList::~LinkedList()
     clear();
 }
 
+// Append the specified element to the end of this list.
 void LinkedList::add(int iValue)
 {
     printf("added %d, size: %d\n", iValue, m_iSize);
@@ -27,7 +28,8 @@ void LinkedList::add(int iValue)
     m_iSize++;
 }
 
-// Return the element at the specified position in the list.
+// Return the element at the specified position in this list. -1 if out
+// of bounds.
 int LinkedList::get(int iIndex)
 {
     int iCount = 0;
@@ -44,7 +46,23 @@ int LinkedList::get(int iIndex)
     return -1;
 }
 
-// Remove all elements from the list.
+// Returns the first element in this list. -1 if empty.
+int LinkedList::getHead() const
+{
+    if (m_pHead)
+        return m_pHead->getValue();
+    return -1;
+}
+
+// Returns the last element in this list. -1 if empty.
+int LinkedList::getTail() const
+{
+    if (m_pTail)
+        return m_pTail->getValue();
+    return -1;
+}
+
+// Remove all elements from this list.
 void LinkedList::clear()
 {
     Node *pCurrent = m_pHead;
@@ -60,7 +78,7 @@ void LinkedList::clear()
     m_pTail = NULL;
 }
 
-// Print all elements in the list.
+// Print all elements in this list.
 void LinkedList::print()
 {
     printf("Size: %d\n", m_iSize);

@@ -8,12 +8,14 @@ public:
     void add(int n);
 
 private:
-    int size;
-    Node *head, *tail;
+    int m_size;
+    Node *m_head, *m_tail;
 };
 
 LinkedList::LinkedList()
-    : size(0)
+    : m_size(0)
+    , m_head(NULL)
+    , m_tail(NULL)
 {
 }
 

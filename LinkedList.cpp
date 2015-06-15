@@ -31,6 +31,20 @@ void LinkedList::add(int iValue)
     m_iSize++;
 }
 
+int LinkedList::get(int iIndex)
+{
+    int iCount = 0;
+    Node *pCurrent = m_pHead;
+    while (pCurrent != NULL) {
+        if (iCount == iIndex)
+            return pCurrent->getValue();
+        pCurrent = pCurrent->getNext();
+        iCount++;
+    }
+    printf("LinkedList::get: index out of bounds (%d)\n", iIndex);
+    return -1;
+}
+
 void LinkedList::print()
 {
     int iCount = 0;

@@ -6,11 +6,12 @@ public:
     LinkedList();
     ~LinkedList();
     void add(int iValue);
-    int getAt(int iIndex);
+    int get(int iIndex);
     void print();
 
 private:
     int m_iSize;
     Node *m_pHead, *m_pTail;
+
     Node* newNode(int iValue, Node *pNext);
 };

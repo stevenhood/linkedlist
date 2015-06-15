@@ -7,6 +7,7 @@ public:
     ~LinkedList();
     void add(int iValue);
     int get(int iIndex);
+    void clear();
     void print();
 
 private:

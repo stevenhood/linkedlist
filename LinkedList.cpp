@@ -141,11 +141,16 @@ void LinkedList::Clear(void)
 // Print all elements in this list.
 void LinkedList::Print(void) const
 {
-    printf("Size: %d\n", m_iSize);
+    if (m_iSize < 1) {
+        printf("List is empty\n");
+        return;
+    }
+
     int iCount = 0;
     Node *pCurrent = m_pHead;
     while (pCurrent != NULL) {
-        printf("Node %d: value = %d\n", iCount++, pCurrent->GetValue());
+        printf("Node %d (%p): value = %d, next = %p\n", iCount++, pCurrent,
+                pCurrent->GetValue(), pCurrent->GetNext());
         pCurrent = pCurrent->GetNext();
     }
 }

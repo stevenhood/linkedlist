@@ -2,41 +2,41 @@
 #include "LinkedList.h"
 
 LinkedList::LinkedList()
-    : m_size(0)
-    , m_head(NULL)
-    , m_tail(NULL)
+    : m_iSize(0)
+    , m_pHead(NULL)
+    , m_pTail(NULL)
 {
 }
 
 LinkedList::~LinkedList()
 {
-    Node *current = m_head;
-    while (current != NULL) {
-        delete current;
-        current = current->getNext();
+    Node *pCurrent = m_pHead;
+    while (pCurrent != NULL) {
+        delete pCurrent;
+        pCurrent = pCurrent->getNext();
     }
 }
 
-void LinkedList::add(int value)
+void LinkedList::add(int iValue)
 {
-    printf("added %d, size: %d\n", value, m_size);
-    if (m_head == NULL) {
-        m_head = new Node(value, NULL);
-        m_tail = m_head;
+    printf("added %d, size: %d\n", iValue, m_iSize);
+    if (m_pHead == NULL) {
+        m_pHead = new Node(iValue, NULL);
+        m_pTail = m_pHead;
     } else {
-        Node *temp = m_tail;
-        m_tail = new Node(value, NULL);
-        temp->setNext(m_tail);
+        Node *temp = m_pTail;
+        m_pTail = new Node(iValue, NULL);
+        temp->setNext(m_pTail);
     }
-    m_size++;
+    m_iSize++;
 }
 
 void LinkedList::print()
 {
-    int count = 0;
-    Node *current = m_head;
-    while (current != NULL) {
-        printf("Node %d: value = %d\n", count++, current->getValue());
-        current = current->getNext();
+    int iCount = 0;
+    Node *pCurrent = m_pHead;
+    while (pCurrent != NULL) {
+        printf("Node %d: value = %d\n", iCount++, pCurrent->getValue());
+        pCurrent = pCurrent->getNext();
     }
 }

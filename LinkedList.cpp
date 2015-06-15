@@ -52,7 +52,7 @@ void LinkedList::Add(int iIndex, int iValue)
 
 // [Private] Returns false if the specified index is out of bounds.
 // Otherwise, returns true.
-bool LinkedList::CheckIndex(int iIndex)
+bool LinkedList::CheckIndex(int iIndex) const
 {
     if (m_iSize == 0)
         return false;
@@ -80,7 +80,7 @@ void LinkedList::AddTail(int iValue)
 
 // Return the element at the specified position in this list. -1 if out
 // of bounds.
-int LinkedList::Get(int iIndex)
+int LinkedList::Get(int iIndex) const
 {
     Node *pNode = GetNode(iIndex);
     if (pNode == NULL) {
@@ -91,7 +91,7 @@ int LinkedList::Get(int iIndex)
 }
 
 // [Private] Return a pointer to the node at the specified index in the list.
-Node* LinkedList::GetNode(int iIndex)
+Node* LinkedList::GetNode(int iIndex) const
 {
     int iCount = 0;
     Node *pCurrent = m_pHead;
@@ -139,7 +139,7 @@ void LinkedList::Clear(void)
 }
 
 // Print all elements in this list.
-void LinkedList::Print(void)
+void LinkedList::Print(void) const
 {
     printf("Size: %d\n", m_iSize);
     int iCount = 0;

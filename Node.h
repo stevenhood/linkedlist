@@ -2,14 +2,14 @@ class Node
 {
 public:
     Node();
-    Node(int value, Node *next);
+    Node(int iValue, Node *pNext);
     ~Node();
-    int getValue() const { return m_value; }
-    void setValue(int n) { m_value = n; }
-    Node* getNext() const { return m_next; }
-    void setNext(Node *node) { m_next = node; }
+    int getValue() const { return m_iValue; }
+    void setValue(int n) { m_iValue = n; }
+    Node* getNext() const { return m_pNext; }
+    void setNext(Node *pNode) { m_pNext = pNode; }
 
 private:
-    int m_value;
-    Node *m_next;
+    int m_iValue;
+    Node *m_pNext;
 };

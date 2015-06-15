@@ -2,12 +2,12 @@
 #include "Node.h"
 
 Node::Node()
-    : m_value(0) , m_next(NULL)
+    : m_iValue(0) , m_pNext(NULL)
 {
 }
 
-Node::Node(int value, Node *next)
-    : m_value(value), m_next(next)
+Node::Node(int iValue, Node *pNext)
+    : m_iValue(iValue), m_pNext(pNext)
 {
 }
 

@@ -48,12 +48,14 @@ int LinkedList::get(int iIndex)
 void LinkedList::clear()
 {
     Node *pCurrent = m_pHead;
+
     while (pCurrent != NULL) {
         // printf("deleting object at %p\n", pCurrent);
         delete pCurrent;
         pCurrent = pCurrent->getNext();
         m_iSize--;
     }
+
     m_pHead = NULL;
     m_pTail = NULL;
 }
@@ -61,6 +63,7 @@ void LinkedList::clear()
 // Print all elements in the list.
 void LinkedList::print()
 {
+    printf("Size: %d\n", m_iSize);
     int iCount = 0;
     Node *pCurrent = m_pHead;
     while (pCurrent != NULL) {

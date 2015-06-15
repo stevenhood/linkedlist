@@ -9,6 +9,7 @@ public:
     int get(int iIndex);
     void clear();
     void print();
+    int size() const { return m_iSize; }
 
 private:
     int m_iSize;

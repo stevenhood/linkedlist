@@ -5,6 +5,8 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    cout << "testing" << endl;
+    LinkedList list;
+    list.add(42);
+    list.print();
     return 0;
 }

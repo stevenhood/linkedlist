@@ -5,11 +5,12 @@ class LinkedList
 public:
     LinkedList();
     ~LinkedList();
-    void add(int n);
+    void add(int value);
 
 private:
     int m_size;
     Node *m_head, *m_tail;
+    Node* newNode(int value, Node *next);
 };
 
 LinkedList::LinkedList()
@@ -23,7 +24,14 @@ LinkedList::LinkedList()
 // {
 // }
 
-void LinkedList::add(int n)
+void LinkedList::add(int value)
 {
-
+    if (m_head == NULL) {
+        m_head = new Node(value, NULL);
+        m_tail = m_head;
+    } else {
+        Node *temp = m_tail;
+        m_tail = new Node(value, temp);
+        temp->setNext(m_tail);
+    }
 }

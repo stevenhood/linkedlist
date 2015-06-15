@@ -6,6 +6,9 @@ public:
     LinkedList();
     ~LinkedList();
     void add(int iValue);
+    void add(int iIndex, int iValue);
+    void addHead(int iValue);
+    void addTail(int iValue);
     int get(int iIndex);
     int getHead() const;
     int getTail() const;
@@ -17,5 +20,6 @@ private:
     int m_iSize;
     Node *m_pHead, *m_pTail;
 
-    Node* newNode(int iValue, Node *pNext);
+    bool checkIndex(int iIndex);
+    Node* getNode(int iIndex);
 };

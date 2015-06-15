@@ -16,34 +16,93 @@ LinkedList::~LinkedList()
 // Append the specified element to the end of this list.
 void LinkedList::add(int iValue)
 {
-    printf("added %d, size: %d\n", iValue, m_iSize);
+    // printf("added %d, list size: %d\n", iValue, m_iSize);
     if (m_pHead == NULL) {
         m_pHead = new Node(iValue, NULL);
         m_pTail = m_pHead;
     } else {
-        Node *temp = m_pTail;
+        Node *pOldTail = m_pTail;
         m_pTail = new Node(iValue, NULL);
-        temp->setNext(m_pTail);
+        pOldTail->setNext(m_pTail);
     }
     m_iSize++;
+}
+
+// Insert an element at the specified position in this list.
+void LinkedList::add(int iIndex, int iValue)
+{
+    if (!checkIndex(iIndex))
+        return;
+
+    if (iIndex == 0) {
+        addHead(iValue);
+    } else if (iIndex == m_iSize) {
+        addTail(iValue);
+    } else {
+        Node *pBefore = getNode(iIndex - 1);
+        Node *pAtIndex = getNode(iIndex);
+        Node *pNew = new Node(iValue, pAtIndex);
+        pBefore->setNext(pNew);
+        m_iSize++;
+    }
+}
+
+bool LinkedList::checkIndex(int iIndex)
+{
+    if (m_iSize == 0)
+        return false;
+    return (0 <= iIndex && iIndex < m_iSize);
+}
+
+void LinkedList::addHead(int iValue)
+{
+    if (m_pHead == NULL) {
+        add(iValue);
+    } else {
+        Node *pOldHead = m_pHead;
+        m_pHead = new Node(iValue, pOldHead);
+        m_iSize++;
+    }
+}
+
+void LinkedList::addTail(int iValue)
+{
+    if (m_pTail == NULL) {
+        add(iValue);
+    } else {
+        Node *pOldTail = m_pTail;
+        m_pTail = new Node(iValue, NULL);
+        pOldTail->setNext(m_pTail);
+        m_iSize++;
+    }
 }
 
 // Return the element at the specified position in this list. -1 if out
 // of bounds.
 int LinkedList::get(int iIndex)
 {
+    Node *pNode = getNode(iIndex);
+    if (pNode == NULL) {
+        printf("LinkedList::get: index out of bounds (%d)\n", iIndex);
+        return -1;
+    }
+    return pNode->getValue();
+}
+
+// Private
+Node* LinkedList::getNode(int iIndex)
+{
     int iCount = 0;
     Node *pCurrent = m_pHead;
 
     while (pCurrent != NULL) {
         if (iCount == iIndex)
-            return pCurrent->getValue();
+            return pCurrent;
         pCurrent = pCurrent->getNext();
         iCount++;
     }
 
-    printf("LinkedList::get: index out of bounds (%d)\n", iIndex);
-    return -1;
+    return NULL;
 }
 
 // Returns the first element in this list. -1 if empty.

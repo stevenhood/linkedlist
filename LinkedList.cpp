@@ -10,6 +10,11 @@ LinkedList::LinkedList()
 
 LinkedList::~LinkedList()
 {
+    Node *current = m_head;
+    while (current != NULL) {
+        delete current;
+        current = current->getNext();
+    }
 }
 
 void LinkedList::add(int value)
@@ -28,8 +33,8 @@ void LinkedList::add(int value)
 
 void LinkedList::print()
 {
-    Node *current = m_head;
     int count = 0;
+    Node *current = m_head;
     while (current != NULL) {
         printf("Node %d: value = %d\n", count++, current->getValue());
         current = current->getNext();

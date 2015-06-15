@@ -3,6 +3,18 @@
 
 #include "LinkedList.h"
 
+void PrintOptions(void)
+{
+    std::cout << "Options:\n"
+        << "1: Add\n"
+        << "2: Add (to index)\n"
+        << "3: AddHead\n"
+        << "4: AddTail\n"
+        << "s: Size\n"
+        << "p: Print\n"
+        << "q: Quit" << std::endl;
+}
+
 // http://stackoverflow.com/questions/14613243/a-call-to-stdcin-does-not-block
 template <typename T>
 T* GetInput(T *tVal)
@@ -25,12 +37,7 @@ int main(int argc, char *argv[])
     bool bInvalid = false;
     bool bRunning = true;
 
-    std::cout << "Options:" << std::endl
-         << "1 : add" << std::endl
-         << "2 : add-index" << std::endl
-         << "3: addHead" << std::endl
-         << "4: addTail" << std::endl
-         << "q: Quit" << std::endl;
+    PrintOptions();
 
     while (bRunning) {
         std::cout << "Enter option > ";
@@ -54,6 +61,14 @@ int main(int argc, char *argv[])
             case '4':
                 oList.AddTail(iInput);
                 break;
+            case 's':
+            case 'S':
+                std::cout << oList.Size() << std::endl;
+                break;
+            case 'p':
+            case 'P':
+                oList.Print();
+                break;
             case 'q':
             case 'Q':
                 std::cout << "Quitting..." << std::endl;
@@ -61,6 +76,7 @@ int main(int argc, char *argv[])
                 break;
             default:
                 std::cout << "Invalid option" << std::endl;
+                PrintOptions();
                 bInvalid = true;
                 break;
         }
@@ -69,8 +85,6 @@ int main(int argc, char *argv[])
             bInvalid = false;
             continue;
         }
-        std::cout << oList.Size() << std::endl;
-        oList.Print();
     }
 
     return 0;

@@ -1,9 +1,9 @@
 class Node
 {
 public:
-    Node();
+    Node(void);
     Node(int iValue, Node *pNext);
-    ~Node();
+    ~Node(void);
     int GetValue() const { return m_iValue; }
     void SetValue(int n) { m_iValue = n; }
     Node* GetNext() const { return m_pNext; }

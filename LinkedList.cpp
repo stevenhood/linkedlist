@@ -1,14 +1,14 @@
 #include <cstdio>
 #include "LinkedList.h"
 
-LinkedList::LinkedList()
+LinkedList::LinkedList(void)
     : m_iSize(0)
     , m_pHead(NULL)
     , m_pTail(NULL)
 {
 }
 
-LinkedList::~LinkedList()
+LinkedList::~LinkedList(void)
 {
     Clear();
 }
@@ -20,6 +20,7 @@ void LinkedList::Add(int iValue)
     if (m_pHead == NULL) {
         m_pHead = new Node(iValue, NULL);
         m_pTail = m_pHead;
+
     } else {
         Node *pOldTail = m_pTail;
         m_pTail = new Node(iValue, NULL);
@@ -36,8 +37,10 @@ void LinkedList::Add(int iIndex, int iValue)
 
     if (iIndex == 0) {
         AddHead(iValue);
+
     } else if (iIndex == m_iSize) {
         AddTail(iValue);
+
     } else {
         Node *pBefore = GetNode(iIndex - 1);
         Node *pAtIndex = GetNode(iIndex);
@@ -104,7 +107,7 @@ Node* LinkedList::GetNode(int iIndex)
 }
 
 // Returns the first element in this list. -1 if empty.
-int LinkedList::GetHead() const
+int LinkedList::GetHead(void) const
 {
     if (m_pHead)
         return m_pHead->GetValue();
@@ -112,7 +115,7 @@ int LinkedList::GetHead() const
 }
 
 // Returns the last element in this list. -1 if empty.
-int LinkedList::GetTail() const
+int LinkedList::GetTail(void) const
 {
     if (m_pTail)
         return m_pTail->GetValue();
@@ -120,7 +123,7 @@ int LinkedList::GetTail() const
 }
 
 // Remove all elements from this list.
-void LinkedList::Clear()
+void LinkedList::Clear(void)
 {
     Node *pCurrent = m_pHead;
 
@@ -136,7 +139,7 @@ void LinkedList::Clear()
 }
 
 // Print all elements in this list.
-void LinkedList::Print()
+void LinkedList::Print(void)
 {
     printf("Size: %d\n", m_iSize);
     int iCount = 0;

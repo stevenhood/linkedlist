@@ -3,17 +3,17 @@
 class LinkedList
 {
 public:
-    LinkedList();
-    ~LinkedList();
+    LinkedList(void);
+    ~LinkedList(void);
     void Add(int iValue);
     void Add(int iIndex, int iValue);
     void AddHead(int iValue);
     void AddTail(int iValue);
     int Get(int iIndex);
-    int GetHead() const;
-    int GetTail() const;
-    void Clear();
-    void Print();
+    int GetHead(void) const;
+    int GetTail(void) const;
+    void Clear(void);
+    void Print(void);
     int Size() const { return m_iSize; }
 
 private:

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Node.h"
 
-Node::Node()
+Node::Node(void)
     : m_iValue(0) , m_pNext(NULL)
 {
 }
@@ -11,6 +11,6 @@ Node::Node(int iValue, Node *pNext)
 {
 }
 
-Node::~Node()
+Node::~Node(void)
 {
 }

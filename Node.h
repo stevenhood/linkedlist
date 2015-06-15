@@ -1,9 +1,5 @@
-class LinkedList;
-
 class Node
 {
-    friend class LinkedList;
-
 public:
     Node();
     Node(int value, Node *next);

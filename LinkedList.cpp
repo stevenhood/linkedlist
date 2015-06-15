@@ -14,13 +14,13 @@ LinkedList::~LinkedList()
 
 void LinkedList::add(int value)
 {
-    printf("size: %d\n", m_size);
+    printf("added %d, size: %d\n", value, m_size);
     if (m_head == NULL) {
         m_head = new Node(value, NULL);
         m_tail = m_head;
     } else {
         Node *temp = m_tail;
-        m_tail = new Node(value, temp);
+        m_tail = new Node(value, NULL);
         temp->setNext(m_tail);
     }
     m_size++;
@@ -31,7 +31,7 @@ void LinkedList::print()
     Node *current = m_head;
     int count = 0;
     while (current != NULL) {
-        std::printf("Node %d: value = %d\n", count, current->m_value);
-        current = current->m_next;
+        printf("Node %d: value = %d\n", count++, current->getValue());
+        current = current->getNext();
     }
 }

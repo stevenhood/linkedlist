@@ -89,7 +89,7 @@ int LinkedList::get(int iIndex)
     return pNode->getValue();
 }
 
-// Private
+// [Private] Return a pointer to the node at the specified index in the list.
 Node* LinkedList::getNode(int iIndex)
 {
     int iCount = 0;

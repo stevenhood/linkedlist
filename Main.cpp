@@ -10,9 +10,15 @@ void PrintOptions(void)
         << "2: Add (to index)\n"
         << "3: AddHead\n"
         << "4: AddTail\n"
-        << "s: Size\n"
+        << "5: Get\n"
+        << "6: GetHead\n"
+        << "7: GetTail\n"
+        << "8: Remove\n"
+        << "c: Clear\n"
         << "p: Print\n"
-        << "q: Quit" << std::endl;
+        << "s: Size\n"
+        << "q: Quit"
+        << std::endl;
 }
 
 // http://stackoverflow.com/questions/14613243/a-call-to-stdcin-does-not-block
@@ -34,8 +40,7 @@ int main(int argc, char *argv[])
 {
     LinkedList oList;
     char cOption;
-    int iInput, iIndex;
-    bool bInvalid = false;
+    int iInput, iIndex, iValue;
     bool bRunning = true;
 
     PrintOptions();
@@ -61,14 +66,33 @@ int main(int argc, char *argv[])
                 GetInput(&iInput, "Add value > ");
                 oList.AddTail(iInput);
                 break;
-            case 's':
-            case 'S':
-                std::cout << "Size: " << oList.Size() << std::endl;
+            case '5':
+                GetInput(&iIndex, "Index > ");
+                std::cout << iIndex << ": " << oList.Get(iIndex) << std::endl;
+                break;
+            case '6':
+                std::cout << "Head: " << oList.GetHead() << std::endl;
+                break;
+            case '7':
+                std::cout << "Tail: " << oList.GetTail() << std::endl;
+                break;
+            case '8':
+                iValue = oList.Remove();
+                std::cout << "Removed " << iValue << std::endl;
+                break;
+            case 'c':
+            case 'C':
+                oList.Clear();
+                std::cout << "List cleared." << std::endl;
                 break;
             case 'p':
             case 'P':
                 std::cout << "List:" << std::endl;
                 oList.Print();
+                break;
+            case 's':
+            case 'S':
+                std::cout << "Size: " << oList.Size() << std::endl;
                 break;
             case 'q':
             case 'Q':
@@ -78,13 +102,7 @@ int main(int argc, char *argv[])
             default:
                 std::cout << "Invalid option" << std::endl;
                 PrintOptions();
-                bInvalid = true;
                 break;
-        }
-
-        if (bInvalid) {
-            bInvalid = false;
-            continue;
         }
     }
 

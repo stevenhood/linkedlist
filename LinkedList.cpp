@@ -97,6 +97,20 @@ int LinkedList::GetTail(void) const
     return -1;
 }
 
+// Remove and return the head of this list. Returns -1 if empty.
+int LinkedList::Remove(void)
+{
+    if (Empty())
+        return -1;
+
+    int iValue = m_pHead->GetValue();
+    Node *pOldHead = m_pHead;
+    m_pHead = m_pHead->GetNext();
+    delete pOldHead;
+    m_iSize--;
+    return iValue;
+}
+
 // Remove all elements from this list.
 void LinkedList::Clear(void)
 {
@@ -116,7 +130,7 @@ void LinkedList::Clear(void)
 // Print all elements in this list.
 void LinkedList::Print(void) const
 {
-    if (m_iSize < 1) {
+    if (Empty()) {
         printf("List is empty\n");
         return;
     }

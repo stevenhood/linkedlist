@@ -50,15 +50,6 @@ void LinkedList::Add(int iIndex, int iValue)
     }
 }
 
-// [Private] Returns false if the specified index is out of bounds.
-// Otherwise, returns true.
-bool LinkedList::CheckIndex(int iIndex) const
-{
-    if (m_iSize == 0)
-        return false;
-    return (0 <= iIndex && iIndex < m_iSize);
-}
-
 // Insert the specified element at the beginning of this list.
 void LinkedList::AddHead(int iValue)
 {
@@ -88,22 +79,6 @@ int LinkedList::Get(int iIndex) const
         return -1;
     }
     return pNode->GetValue();
-}
-
-// [Private] Return a pointer to the node at the specified index in the list.
-Node* LinkedList::GetNode(int iIndex) const
-{
-    int iCount = 0;
-    Node *pCurrent = m_pHead;
-
-    while (pCurrent != NULL) {
-        if (iCount == iIndex)
-            return pCurrent;
-        pCurrent = pCurrent->GetNext();
-        iCount++;
-    }
-
-    return NULL;
 }
 
 // Returns the first element in this list. -1 if empty.
@@ -153,4 +128,29 @@ void LinkedList::Print(void) const
                 pCurrent->GetValue(), pCurrent->GetNext());
         pCurrent = pCurrent->GetNext();
     }
+}
+
+// [Private] Return a pointer to the node at the specified index in the list.
+Node* LinkedList::GetNode(int iIndex) const
+{
+    int iCount = 0;
+    Node *pCurrent = m_pHead;
+
+    while (pCurrent != NULL) {
+        if (iCount == iIndex)
+            return pCurrent;
+        pCurrent = pCurrent->GetNext();
+        iCount++;
+    }
+
+    return NULL;
+}
+
+// [Private] Returns false if the specified index is out of bounds.
+// Otherwise, returns true.
+bool LinkedList::CheckIndex(int iIndex) const
+{
+    if (m_iSize == 0)
+        return false;
+    return (0 <= iIndex && iIndex < m_iSize);
 }
